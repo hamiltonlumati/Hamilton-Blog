@@ -47,6 +47,10 @@ const blog_delete = (req, res) => {
             console.log(err);
         });
 }
+const blog_update = (req, res) => {
+    const id = req.params.id;
+
+}
 
 module.exports = {
     blog_index,
