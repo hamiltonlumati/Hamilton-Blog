@@ -6,25 +6,31 @@
             <% if(op==1) {%>
                 <div class="create-blog content">
                     <form action="/blogs/<%=id%>" method="POST">
-                        <label for="title">Blog title:</label>
-                        <input type="text" id="title" name="title" required placeholder="<%= blog.title %>">
-                        <label for="snippet">Blog snippet:</label>
-                        <input type="text" id="snippet" name="snippet" required placeholder="<%= blog.snippet %>">
-                        <label for="body">Blog body:</label>
-                        <textarea id="body" name="body" required placeholder="<%= blog.body %>"></textarea>
-                        <button>Submit</button>
+                        <%if(val==1){ %>
+                            <p class="val">Please, Introduce more than four characters in each one of the fields</p>
+                            <% }%>
+                                <label for="title">Blog title:</label>
+                                <input type="text" id="title" name="title" required placeholder="<%= blog.title %>">
+                                <label for="snippet">Blog snippet:</label>
+                                <input type="text" id="snippet" name="snippet" required placeholder="<%= blog.snippet %>">
+                                <label for="body">Blog body:</label>
+                                <textarea id="body" name="body" required placeholder="<%= blog.body %>"></textarea>
+                                <button>Submit</button>
                     </form>
                 </div>
                 <%} else{%>
                     <div class="create-blog content">
                         <form action="/blogs" method="POST">
-                            <label for="title">Blog title:</label>
-                            <input type="text" id="title" name="title" required>
-                            <label for="snippet">Blog snippet:</label>
-                            <input type="text" id="snippet" name="snippet" required>
-                            <label for="body">Blog body:</label>
-                            <textarea id="body" name="body" required></textarea>
-                            <button>Submit</button>
+                            <%if(val==1){ %>
+                                <p class="val">Please, Introduce more than four characters in each one of the fields</p>
+                                <% }%>
+                                    <label for="title">Blog title:</label>
+                                    <input type="text" id="title" name="title" required>
+                                    <label for="snippet">Blog snippet:</label>
+                                    <input type="text" id="snippet" name="snippet" required>
+                                    <label for="body">Blog body:</label>
+                                    <textarea id="body" name="body" required></textarea>
+                                    <button>Submit</button>
                         </form>
                     </div>
 

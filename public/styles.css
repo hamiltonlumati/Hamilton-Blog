@@ -157,3 +157,7 @@ textarea {
     background-color: whitesmoke;
     border-radius: 10px;
 }
+
+.val {
+    color: red
+}
