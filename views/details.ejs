@@ -14,7 +14,7 @@
                     </p>
                 </div>
                 <a class="delete" data-doc="<%= blog._id %>">delete</a>
-                <a class="delete" data-doc="<%= blog._id %>">update</a>
+                <a class="update" href="/blogs/create/<%= blog._id %>">update</a>
 
             </div>
 
@@ -30,7 +30,7 @@
                             .then(response => response.json())
                             .then(data => window.location.href = data.redirect)
                             .catch(err => console.log(err));
-                    });
+                    })
                 </script>
     </body>
 

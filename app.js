@@ -2,9 +2,11 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
+const bodyParser = require('body-parser');
 
 // express app
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // connect to mongodb & listen for requests
 const dbURI = 'mongodb+srv://netninja:test1234@nodetuts.we0uh.mongodb.net/node-tuts?retryWrites=true&w=majority';
