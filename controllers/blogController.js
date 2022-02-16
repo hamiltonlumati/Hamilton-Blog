@@ -1,7 +1,7 @@
 const Blog = require('../models/blog');
 const bodyParser = require('body-parser');
 
-
+//index controll: render the page where all the blogs will be showed
 const blog_index = (req, res) => {
     Blog.find().sort({ createdAt: -1 })
         .then(result => {
@@ -12,6 +12,7 @@ const blog_index = (req, res) => {
         });
 }
 
+//receives the data to update a blog that already exists in the database and validates it
 const blog_update_get = (req, res) => {
     const id = req.params.id;
     const op = 1;
@@ -26,6 +27,8 @@ const blog_update_get = (req, res) => {
         });
 }
 
+
+//if the data is accepted the blog with the indicated id will have its data updated
 const blog_update_patch = (req, res) => {
     const id = req.params.id;
     const blog = new Blog(req.body);
@@ -48,6 +51,8 @@ const blog_update_patch = (req, res) => {
             });
     }
 }
+
+//controller that prepares the details page and renders it
 const blog_details = (req, res) => {
     const id = req.params.id;
     const op = 0;
@@ -61,11 +66,13 @@ const blog_details = (req, res) => {
         });
 }
 
+//controller that receives the data of a blog that is about to be created
 const blog_create_get = (req, res) => {
 
     res.render('create', { val: 0, op: 0, title: 'Create a new blog' });
 }
 
+//controller to store the introduced data into the database after the data is validated
 const blog_create_post = (req, res) => {
     const id = req.params.id;
     const blog = new Blog(req.body);
@@ -90,6 +97,7 @@ const blog_create_post = (req, res) => {
     }
 }
 
+//controller to delete a blog
 const blog_delete = (req, res) => {
     const id = req.params.id;
     Blog.findByIdAndDelete(id)
@@ -101,6 +109,19 @@ const blog_delete = (req, res) => {
         });
 }
 
+//search controller
+const blog_search = (req, res) => {
+    const blog = new Blog(req.body);
+    Blog.find({ title: blog.search }).sort({ createdAt: -1 })
+        .then(result => {
+            res.render('index', { blogs: result, title: `Showing results for${search}` });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
+}
+
 module.exports = {
     blog_index,
     blog_details,
@@ -109,4 +130,5 @@ module.exports = {
     blog_delete,
     blog_update_get,
     blog_update_patch,
+    blog_search,
 }

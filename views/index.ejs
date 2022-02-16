@@ -3,6 +3,10 @@
 
     <body>
         <%- include("./partials/nav.ejs") %>
+            <form method="get" action="/blogs/search">
+                <input type="search" name="search">
+                <input type="submit">
+            </form>
 
             <div class="blogs content">
                 <h2>All Blogs</h2>
